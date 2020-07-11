@@ -19,6 +19,10 @@
 		115663A724B7A3E4009E7C61 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115663A624B7A3E4009E7C61 /* CardView.swift */; };
 		115663A924B80B11009E7C61 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115663A824B80B11009E7C61 /* User.swift */; };
 		115663AB24B80C10009E7C61 /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115663AA24B80C10009E7C61 /* CardViewModel.swift */; };
+		115663AE24B972E7009E7C61 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115663AD24B972E7009E7C61 /* LoginController.swift */; };
+		115663B024B972EF009E7C61 /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115663AF24B972EF009E7C61 /* RegistrationController.swift */; };
+		115663B224B98DE3009E7C61 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115663B124B98DE3009E7C61 /* CustomTextField.swift */; };
+		115663B424BA2AD1009E7C61 /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115663B324BA2AD1009E7C61 /* AuthButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +40,10 @@
 		115663A624B7A3E4009E7C61 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		115663A824B80B11009E7C61 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		115663AA24B80C10009E7C61 /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
+		115663AD24B972E7009E7C61 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		115663AF24B972EF009E7C61 /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
+		115663B124B98DE3009E7C61 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		115663B324BA2AD1009E7C61 /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +96,8 @@
 			isa = PBXGroup;
 			children = (
 				1156639C24B79A4E009E7C61 /* Extensions.swift */,
+				115663B124B98DE3009E7C61 /* CustomTextField.swift */,
+				115663B324BA2AD1009E7C61 /* AuthButton.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -102,6 +112,7 @@
 		1156639624B7991B009E7C61 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				115663AC24B972D7009E7C61 /* Authentication */,
 				1156639A24B79999009E7C61 /* HomeController.swift */,
 			);
 			path = Controller;
@@ -131,6 +142,15 @@
 				115663A824B80B11009E7C61 /* User.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		115663AC24B972D7009E7C61 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				115663AD24B972E7009E7C61 /* LoginController.swift */,
+				115663AF24B972EF009E7C61 /* RegistrationController.swift */,
+			);
+			path = Authentication;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -205,14 +225,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				115663A724B7A3E4009E7C61 /* CardView.swift in Sources */,
+				115663B424BA2AD1009E7C61 /* AuthButton.swift in Sources */,
 				115663A524B79F9B009E7C61 /* BottomControlsStackView.swift in Sources */,
 				1156638124B798F8009E7C61 /* AppDelegate.swift in Sources */,
 				115663A124B79AD1009E7C61 /* HomeNavigationStackView.swift in Sources */,
 				115663A924B80B11009E7C61 /* User.swift in Sources */,
 				1156638324B798F8009E7C61 /* SceneDelegate.swift in Sources */,
+				115663B024B972EF009E7C61 /* RegistrationController.swift in Sources */,
 				1156639B24B79999009E7C61 /* HomeController.swift in Sources */,
+				115663B224B98DE3009E7C61 /* CustomTextField.swift in Sources */,
 				1156639D24B79A4E009E7C61 /* Extensions.swift in Sources */,
 				115663AB24B80C10009E7C61 /* CardViewModel.swift in Sources */,
+				115663AE24B972E7009E7C61 /* LoginController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
