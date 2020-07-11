@@ -9,21 +9,33 @@
 /* Begin PBXBuildFile section */
 		1156638124B798F8009E7C61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1156638024B798F8009E7C61 /* AppDelegate.swift */; };
 		1156638324B798F8009E7C61 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1156638224B798F8009E7C61 /* SceneDelegate.swift */; };
-		1156638524B798F8009E7C61 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1156638424B798F8009E7C61 /* ViewController.swift */; };
 		1156638824B798F8009E7C61 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1156638624B798F8009E7C61 /* Main.storyboard */; };
-		1156638A24B798FA009E7C61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1156638924B798FA009E7C61 /* Assets.xcassets */; };
 		1156638D24B798FA009E7C61 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1156638B24B798FA009E7C61 /* LaunchScreen.storyboard */; };
+		1156639B24B79999009E7C61 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1156639A24B79999009E7C61 /* HomeController.swift */; };
+		1156639D24B79A4E009E7C61 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1156639C24B79A4E009E7C61 /* Extensions.swift */; };
+		115663A124B79AD1009E7C61 /* HomeNavigationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115663A024B79AD1009E7C61 /* HomeNavigationStackView.swift */; };
+		115663A324B79BE2009E7C61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 115663A224B79BE2009E7C61 /* Assets.xcassets */; };
+		115663A524B79F9B009E7C61 /* BottomControlsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115663A424B79F9B009E7C61 /* BottomControlsStackView.swift */; };
+		115663A724B7A3E4009E7C61 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115663A624B7A3E4009E7C61 /* CardView.swift */; };
+		115663A924B80B11009E7C61 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115663A824B80B11009E7C61 /* User.swift */; };
+		115663AB24B80C10009E7C61 /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115663AA24B80C10009E7C61 /* CardViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1156637D24B798F8009E7C61 /* Tinder iOS 13.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tinder iOS 13.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1156638024B798F8009E7C61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1156638224B798F8009E7C61 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		1156638424B798F8009E7C61 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1156638724B798F8009E7C61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		1156638924B798FA009E7C61 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1156638C24B798FA009E7C61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1156638E24B798FA009E7C61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1156639A24B79999009E7C61 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		1156639C24B79A4E009E7C61 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		115663A024B79AD1009E7C61 /* HomeNavigationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationStackView.swift; sourceTree = "<group>"; };
+		115663A224B79BE2009E7C61 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../Downloads/Assets.xcassets; sourceTree = "<group>"; };
+		115663A424B79F9B009E7C61 /* BottomControlsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomControlsStackView.swift; sourceTree = "<group>"; };
+		115663A624B7A3E4009E7C61 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		115663A824B80B11009E7C61 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		115663AA24B80C10009E7C61 /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +68,69 @@
 		1156637F24B798F8009E7C61 /* Tinder iOS 13 */ = {
 			isa = PBXGroup;
 			children = (
+				1156639924B79922009E7C61 /* Model */,
+				1156639824B7991F009E7C61 /* View */,
+				1156639724B7991D009E7C61 /* ViewModel */,
+				1156639624B7991B009E7C61 /* Controller */,
+				1156639524B7991A009E7C61 /* API */,
+				1156639424B79916009E7C61 /* Utilities */,
 				1156638024B798F8009E7C61 /* AppDelegate.swift */,
 				1156638224B798F8009E7C61 /* SceneDelegate.swift */,
-				1156638424B798F8009E7C61 /* ViewController.swift */,
 				1156638624B798F8009E7C61 /* Main.storyboard */,
-				1156638924B798FA009E7C61 /* Assets.xcassets */,
+				115663A224B79BE2009E7C61 /* Assets.xcassets */,
 				1156638B24B798FA009E7C61 /* LaunchScreen.storyboard */,
 				1156638E24B798FA009E7C61 /* Info.plist */,
 			);
 			path = "Tinder iOS 13";
+			sourceTree = "<group>";
+		};
+		1156639424B79916009E7C61 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				1156639C24B79A4E009E7C61 /* Extensions.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		1156639524B7991A009E7C61 /* API */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		1156639624B7991B009E7C61 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1156639A24B79999009E7C61 /* HomeController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		1156639724B7991D009E7C61 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				115663AA24B80C10009E7C61 /* CardViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		1156639824B7991F009E7C61 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				115663A024B79AD1009E7C61 /* HomeNavigationStackView.swift */,
+				115663A424B79F9B009E7C61 /* BottomControlsStackView.swift */,
+				115663A624B7A3E4009E7C61 /* CardView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1156639924B79922009E7C61 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				115663A824B80B11009E7C61 /* User.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,8 +192,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1156638D24B798FA009E7C61 /* LaunchScreen.storyboard in Resources */,
-				1156638A24B798FA009E7C61 /* Assets.xcassets in Resources */,
 				1156638824B798F8009E7C61 /* Main.storyboard in Resources */,
+				115663A324B79BE2009E7C61 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,9 +204,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1156638524B798F8009E7C61 /* ViewController.swift in Sources */,
+				115663A724B7A3E4009E7C61 /* CardView.swift in Sources */,
+				115663A524B79F9B009E7C61 /* BottomControlsStackView.swift in Sources */,
 				1156638124B798F8009E7C61 /* AppDelegate.swift in Sources */,
+				115663A124B79AD1009E7C61 /* HomeNavigationStackView.swift in Sources */,
+				115663A924B80B11009E7C61 /* User.swift in Sources */,
 				1156638324B798F8009E7C61 /* SceneDelegate.swift in Sources */,
+				1156639B24B79999009E7C61 /* HomeController.swift in Sources */,
+				1156639D24B79A4E009E7C61 /* Extensions.swift in Sources */,
+				115663AB24B80C10009E7C61 /* CardViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
