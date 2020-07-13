@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -23,6 +23,11 @@
 		115663B024B972EF009E7C61 /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115663AF24B972EF009E7C61 /* RegistrationController.swift */; };
 		115663B224B98DE3009E7C61 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115663B124B98DE3009E7C61 /* CustomTextField.swift */; };
 		115663B424BA2AD1009E7C61 /* AuthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 115663B324BA2AD1009E7C61 /* AuthButton.swift */; };
+		1177E4D624BACDB800F3828D /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1177E4D524BACDB800F3828D /* AuthenticationViewModel.swift */; };
+		1177E4DC24BB74C700F3828D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1177E4DB24BB74C700F3828D /* GoogleService-Info.plist */; };
+		1177E4DE24BB85E000F3828D /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1177E4DD24BB85E000F3828D /* AuthService.swift */; };
+		1177E4E024BB85EC00F3828D /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1177E4DF24BB85EC00F3828D /* Service.swift */; };
+		55DBE1B565A83FF793EB1A0C /* Pods_Tinder_iOS_13.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24390602F1DBD103E7D7541F /* Pods_Tinder_iOS_13.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +49,13 @@
 		115663AF24B972EF009E7C61 /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
 		115663B124B98DE3009E7C61 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		115663B324BA2AD1009E7C61 /* AuthButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButton.swift; sourceTree = "<group>"; };
+		1177E4D524BACDB800F3828D /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
+		1177E4DB24BB74C700F3828D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1177E4DD24BB85E000F3828D /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		1177E4DF24BB85EC00F3828D /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		24390602F1DBD103E7D7541F /* Pods_Tinder_iOS_13.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tinder_iOS_13.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		49FB23804C599C2C93C41CA5 /* Pods-Tinder iOS 13.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tinder iOS 13.release.xcconfig"; path = "Target Support Files/Pods-Tinder iOS 13/Pods-Tinder iOS 13.release.xcconfig"; sourceTree = "<group>"; };
+		969CC06136C85760EA591446 /* Pods-Tinder iOS 13.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tinder iOS 13.debug.xcconfig"; path = "Target Support Files/Pods-Tinder iOS 13/Pods-Tinder iOS 13.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55DBE1B565A83FF793EB1A0C /* Pods_Tinder_iOS_13.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +75,8 @@
 			children = (
 				1156637F24B798F8009E7C61 /* Tinder iOS 13 */,
 				1156637E24B798F8009E7C61 /* Products */,
+				1EE68185FC26CB8715277A44 /* Pods */,
+				798604A9D9A86FCFA8878F47 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -87,6 +102,7 @@
 				1156638624B798F8009E7C61 /* Main.storyboard */,
 				115663A224B79BE2009E7C61 /* Assets.xcassets */,
 				1156638B24B798FA009E7C61 /* LaunchScreen.storyboard */,
+				1177E4DB24BB74C700F3828D /* GoogleService-Info.plist */,
 				1156638E24B798FA009E7C61 /* Info.plist */,
 			);
 			path = "Tinder iOS 13";
@@ -105,6 +121,8 @@
 		1156639524B7991A009E7C61 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				1177E4DD24BB85E000F3828D /* AuthService.swift */,
+				1177E4DF24BB85EC00F3828D /* Service.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -122,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				115663AA24B80C10009E7C61 /* CardViewModel.swift */,
+				1177E4D524BACDB800F3828D /* AuthenticationViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -153,6 +172,23 @@
 			path = Authentication;
 			sourceTree = "<group>";
 		};
+		1EE68185FC26CB8715277A44 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				969CC06136C85760EA591446 /* Pods-Tinder iOS 13.debug.xcconfig */,
+				49FB23804C599C2C93C41CA5 /* Pods-Tinder iOS 13.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		798604A9D9A86FCFA8878F47 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				24390602F1DBD103E7D7541F /* Pods_Tinder_iOS_13.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -160,9 +196,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1156639124B798FA009E7C61 /* Build configuration list for PBXNativeTarget "Tinder iOS 13" */;
 			buildPhases = (
+				1F16D8C898D07B51F93DC088 /* [CP] Check Pods Manifest.lock */,
 				1156637924B798F8009E7C61 /* Sources */,
 				1156637A24B798F8009E7C61 /* Frameworks */,
 				1156637B24B798F8009E7C61 /* Resources */,
+				91A88FCC6D93FD0A7552FA58 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -212,12 +250,55 @@
 			buildActionMask = 2147483647;
 			files = (
 				1156638D24B798FA009E7C61 /* LaunchScreen.storyboard in Resources */,
+				1177E4DC24BB74C700F3828D /* GoogleService-Info.plist in Resources */,
 				1156638824B798F8009E7C61 /* Main.storyboard in Resources */,
 				115663A324B79BE2009E7C61 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1F16D8C898D07B51F93DC088 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Tinder iOS 13-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		91A88FCC6D93FD0A7552FA58 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Tinder iOS 13/Pods-Tinder iOS 13-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Tinder iOS 13/Pods-Tinder iOS 13-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Tinder iOS 13/Pods-Tinder iOS 13-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1156637924B798F8009E7C61 /* Sources */ = {
@@ -226,15 +307,18 @@
 			files = (
 				115663A724B7A3E4009E7C61 /* CardView.swift in Sources */,
 				115663B424BA2AD1009E7C61 /* AuthButton.swift in Sources */,
+				1177E4D624BACDB800F3828D /* AuthenticationViewModel.swift in Sources */,
 				115663A524B79F9B009E7C61 /* BottomControlsStackView.swift in Sources */,
 				1156638124B798F8009E7C61 /* AppDelegate.swift in Sources */,
 				115663A124B79AD1009E7C61 /* HomeNavigationStackView.swift in Sources */,
 				115663A924B80B11009E7C61 /* User.swift in Sources */,
 				1156638324B798F8009E7C61 /* SceneDelegate.swift in Sources */,
 				115663B024B972EF009E7C61 /* RegistrationController.swift in Sources */,
+				1177E4E024BB85EC00F3828D /* Service.swift in Sources */,
 				1156639B24B79999009E7C61 /* HomeController.swift in Sources */,
 				115663B224B98DE3009E7C61 /* CustomTextField.swift in Sources */,
 				1156639D24B79A4E009E7C61 /* Extensions.swift in Sources */,
+				1177E4DE24BB85E000F3828D /* AuthService.swift in Sources */,
 				115663AB24B80C10009E7C61 /* CardViewModel.swift in Sources */,
 				115663AE24B972E7009E7C61 /* LoginController.swift in Sources */,
 			);
@@ -378,6 +462,7 @@
 		};
 		1156639224B798FA009E7C61 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 969CC06136C85760EA591446 /* Pods-Tinder iOS 13.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -396,6 +481,7 @@
 		};
 		1156639324B798FA009E7C61 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 49FB23804C599C2C93C41CA5 /* Pods-Tinder iOS 13.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
