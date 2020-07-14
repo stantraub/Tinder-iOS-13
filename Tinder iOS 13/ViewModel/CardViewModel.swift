@@ -13,7 +13,7 @@ class CardViewModel {
     let userInfoText: NSAttributedString
     private var imageIndex = 0
     
-    var imageToShow: UIImage?
+    var imageUrl: URL?
     
     init(user: User) {
         self.user = user
@@ -26,18 +26,20 @@ class CardViewModel {
            UIFont.systemFont(ofSize: 24), .foregroundColor: UIColor.white]))
         
         self.userInfoText = attributedText
+        
+        self.imageUrl = URL(string: user.profileImageUrl)
     }
     
     func showNextPhoto() {
-        guard imageIndex < user.images.count - 1 else { return }
-        imageIndex += 1
-        self.imageToShow = user.images[imageIndex]
+//        guard imageIndex < user.images.count - 1 else { return }
+//        imageIndex += 1
+//        self.imageToShow = user.images[imageIndex]
         
     }
     
     func showPreviousPhoto() {
-        guard imageIndex > 0 else { return }
-        imageIndex -= 1
-        self.imageToShow = user.images[imageIndex]
+//        guard imageIndex > 0 else { return }
+//        imageIndex -= 1
+//        self.imageToShow = user.images[imageIndex]
     }
 }

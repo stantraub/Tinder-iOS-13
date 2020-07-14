@@ -16,6 +16,10 @@ class HomeController: UIViewController {
     private let topStack = HomeNavigationStackView()
     private let bottomStack = BottomControlsStackView()
     
+    private var viewModels = [CardViewModel]() {
+        didSet { configureCards()}
+    }
+    
     private let deckView: UIView = {
         let view = UIView()
         view.backgroundColor = .systemPink
@@ -28,11 +32,24 @@ class HomeController: UIViewController {
         super.viewDidLoad()
         checkIfUserIsLoggedIn()
         configureUI()
-        configureCards()
-        logout()
+        fetchUsers()
+//        logout()
     }
     
     //MARK: - API
+    
+    func fetchUser() {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        Service.fetchUser(withUid: uid) { user in
+            print("DEBUG: User is \(user.name)")
+        }
+    }
+    
+    func fetchUsers() {
+        Service.fetchUsers { (users) in
+            self.viewModels = users.map({ CardViewModel(user: $0)})
+        }
+    }
     
     func checkIfUserIsLoggedIn() {
         if Auth.auth().currentUser == nil {
@@ -54,22 +71,17 @@ class HomeController: UIViewController {
     //MARK: - Helpers
     
     func configureCards() {
-        
-        let user1 = User(name: "Jane Doe", age: 22, images: [#imageLiteral(resourceName: "kelly1"), #imageLiteral(resourceName: "kelly2"), #imageLiteral(resourceName: "kelly3")])
-        let user2 = User(name: "Megan", age: 21, images: [#imageLiteral(resourceName: "jane2"), #imageLiteral(resourceName: "jane1")])
-        let cardView1 = CardView(viewModel: CardViewModel(user: user1))
-        let cardView2 = CardView(viewModel: CardViewModel(user: user2))
-      
-
-        deckView.addSubview(cardView1)
-        deckView.addSubview(cardView2)
-        
-        cardView1.fillSuperview()
-        cardView2.fillSuperview()
+        viewModels.forEach { viewModel in
+            let cardView = CardView(viewModel: viewModel)
+            deckView.addSubview(cardView)
+            cardView.fillSuperview()
+        }
     }
     
     func configureUI() {
         view.backgroundColor = .white
+        
+        topStack.delegate = self
         
         let stack = UIStackView(arrangedSubviews: [topStack, deckView, bottomStack])
         stack.axis = .vertical
@@ -92,4 +104,17 @@ class HomeController: UIViewController {
             self.present(nav, animated: true, completion: nil)
         }
     }
+}
+
+extension HomeController: HomeNavigationStackViewDelegate {
+    func showSettings() {
+        print("DEBUG: Show settings from home controller..")
+    }
+    
+    func showMessages() {
+        print("DEBUG: Show messages from home controller..")
+
+    }
+    
+    
 }
