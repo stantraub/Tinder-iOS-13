@@ -28,6 +28,8 @@
 		1177E4DE24BB85E000F3828D /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1177E4DD24BB85E000F3828D /* AuthService.swift */; };
 		1177E4E024BB85EC00F3828D /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1177E4DF24BB85EC00F3828D /* Service.swift */; };
 		1177E4E224BD173B00F3828D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1177E4E124BD173B00F3828D /* Constants.swift */; };
+		1177E4E424BD605700F3828D /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1177E4E324BD605700F3828D /* SettingsController.swift */; };
+		1177E4E624BD740800F3828D /* SettingsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1177E4E524BD740800F3828D /* SettingsHeader.swift */; };
 		55DBE1B565A83FF793EB1A0C /* Pods_Tinder_iOS_13.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24390602F1DBD103E7D7541F /* Pods_Tinder_iOS_13.framework */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +57,8 @@
 		1177E4DD24BB85E000F3828D /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		1177E4DF24BB85EC00F3828D /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		1177E4E124BD173B00F3828D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		1177E4E324BD605700F3828D /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		1177E4E524BD740800F3828D /* SettingsHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeader.swift; sourceTree = "<group>"; };
 		24390602F1DBD103E7D7541F /* Pods_Tinder_iOS_13.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tinder_iOS_13.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		49FB23804C599C2C93C41CA5 /* Pods-Tinder iOS 13.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tinder iOS 13.release.xcconfig"; path = "Target Support Files/Pods-Tinder iOS 13/Pods-Tinder iOS 13.release.xcconfig"; sourceTree = "<group>"; };
 		969CC06136C85760EA591446 /* Pods-Tinder iOS 13.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tinder iOS 13.debug.xcconfig"; path = "Target Support Files/Pods-Tinder iOS 13/Pods-Tinder iOS 13.debug.xcconfig"; sourceTree = "<group>"; };
@@ -135,6 +139,7 @@
 			children = (
 				115663AC24B972D7009E7C61 /* Authentication */,
 				1156639A24B79999009E7C61 /* HomeController.swift */,
+				1177E4E324BD605700F3828D /* SettingsController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -154,6 +159,7 @@
 				115663A024B79AD1009E7C61 /* HomeNavigationStackView.swift */,
 				115663A424B79F9B009E7C61 /* BottomControlsStackView.swift */,
 				115663A624B7A3E4009E7C61 /* CardView.swift */,
+				1177E4E524BD740800F3828D /* SettingsHeader.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -308,6 +314,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1177E4E424BD605700F3828D /* SettingsController.swift in Sources */,
 				115663A724B7A3E4009E7C61 /* CardView.swift in Sources */,
 				1177E4E224BD173B00F3828D /* Constants.swift in Sources */,
 				115663B424BA2AD1009E7C61 /* AuthButton.swift in Sources */,
@@ -322,6 +329,7 @@
 				1156639B24B79999009E7C61 /* HomeController.swift in Sources */,
 				115663B224B98DE3009E7C61 /* CustomTextField.swift in Sources */,
 				1156639D24B79A4E009E7C61 /* Extensions.swift in Sources */,
+				1177E4E624BD740800F3828D /* SettingsHeader.swift in Sources */,
 				1177E4DE24BB85E000F3828D /* AuthService.swift in Sources */,
 				115663AB24B80C10009E7C61 /* CardViewModel.swift in Sources */,
 				115663AE24B972E7009E7C61 /* LoginController.swift in Sources */,
