@@ -14,7 +14,7 @@ class SettingsController: UITableViewController {
     
     private let headerView = SettingsHeader()
     private let imagePicker = UIImagePickerController()
-    
+    private var imageIndex = 0
     //MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -33,6 +33,10 @@ class SettingsController: UITableViewController {
     }
     
     //MARK: - Helpers
+    
+    func setHeaderImage(_ image: UIImage?) {
+        headerView.buttons[imageIndex].setImage(image?.withRenderingMode(.alwaysOriginal), for: .normal)
+    }
     
     func configureUI() {
         headerView.delegate = self
@@ -55,6 +59,7 @@ class SettingsController: UITableViewController {
 
 extension SettingsController: SettingsHeaderDelegate {
     func settingsHeader(_ header: SettingsHeader, didSelect index: Int) {
+        self.imageIndex = index
         present(imagePicker, animated: true, completion: nil)
     }
     
@@ -66,6 +71,8 @@ extension SettingsController: SettingsHeaderDelegate {
 extension SettingsController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let selectedImage = info[.originalImage] as? UIImage
+        
+        setHeaderImage(selectedImage)
         
         dismiss(animated: true, completion: nil)
     }

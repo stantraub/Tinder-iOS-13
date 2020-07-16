@@ -19,6 +19,7 @@ class SettingsHeader: UIView {
     weak var delegate: SettingsHeaderDelegate?
     
     //lazy property because we are trying to use the function outside of the initializer
+    var buttons = [UIButton]()
     lazy var button1 = createButton(0)
     lazy var button2 = createButton(1)
     lazy var button3 = createButton(2)
@@ -29,7 +30,9 @@ class SettingsHeader: UIView {
         super.init(frame: frame)
         backgroundColor = .systemGroupedBackground
         
-
+        buttons.append(button1)
+        buttons.append(button2)
+        buttons.append(button3)
         
         addSubview(button1)
         button1.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, paddingTop: 16, paddingLeft: 16, paddingBottom: 16)
