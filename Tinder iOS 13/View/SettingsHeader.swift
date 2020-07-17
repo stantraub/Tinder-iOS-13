@@ -20,9 +20,7 @@ class SettingsHeader: UIView {
     
     //lazy property because we are trying to use the function outside of the initializer
     var buttons = [UIButton]()
-    lazy var button1 = createButton(0)
-    lazy var button2 = createButton(1)
-    lazy var button3 = createButton(2)
+
     
     //MARK: - Lifecycle
     
@@ -30,6 +28,9 @@ class SettingsHeader: UIView {
         super.init(frame: frame)
         backgroundColor = .systemGroupedBackground
         
+        let button1 = createButton(0)
+        let button2 = createButton(1)
+        let button3 = createButton(2)
         buttons.append(button1)
         buttons.append(button2)
         buttons.append(button3)

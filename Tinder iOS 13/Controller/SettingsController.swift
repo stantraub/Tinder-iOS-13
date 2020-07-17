@@ -8,6 +8,8 @@
 
 import UIKit
 
+private let reuseIdentifier = "SettingsCell"
+
 class SettingsController: UITableViewController {
     
     //MARK: - Properties
@@ -52,9 +54,49 @@ class SettingsController: UITableViewController {
         tableView.separatorStyle = .none
         
         tableView.tableHeaderView = headerView
+        tableView.backgroundColor = .systemGroupedBackground
+        tableView.rowHeight = 44
+        tableView.register(SettingsCell.self, forCellReuseIdentifier: reuseIdentifier)
         headerView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 300)
     }
 }
+
+//MARK: - UITableViewDataSource
+
+extension SettingsController {
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return SettingsSections.allCases.count
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! SettingsCell
+        return cell
+    }
+}
+
+//MARK: - UITableViewDelegete
+
+extension SettingsController {
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 32
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        guard let section = SettingsSections(rawValue: section) else { return nil }
+        return section.description
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        guard let section = SettingsSections(rawValue: indexPath.section) else { return 0 }
+        return section == .ageRange ? 96 : 44
+        
+    }
+}
+
 //MARK: - SettingsHeaderDelegate
 
 extension SettingsController: SettingsHeaderDelegate {
