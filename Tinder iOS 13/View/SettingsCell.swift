@@ -8,25 +8,38 @@
 
 import UIKit
 
+protocol SettingsCellDelegate: class {
+    func settingsCell(_ cell: SettingsCell, wantsToUpdateUserWith value: String,
+                      for section: SettingsSections)
+    func settingsCell(_ cell: SettingsCell, wantsToUpdateAgeRangeWith sender: UISlider)
+}
+
 class SettingsCell: UITableViewCell {
     
     //MARK: - Properties
+    
+    weak var delegate: SettingsCellDelegate?
+    
+    var viewModel: SettingsViewModel! {
+        didSet { configure() }
+    }
     
     lazy var inputField: UITextField = {
         let tf = UITextField()
         tf.borderStyle = .none
         tf.font = UIFont.systemFont(ofSize: 16)
-        
-        tf.placeholder = "Enter value here..."
-        
+                
         let paddingView = UIView()
         paddingView.setDimensions(height: 50, width: 28)
         
         tf.leftView = paddingView
         tf.leftViewMode = .always
+        tf.addTarget(self, action: #selector(handleUpdateUserInfo), for: .editingDidEnd)
         
         return tf
     }()
+    
+    var sliderStack = UIStackView()
     
     let minAgeLabel = UILabel()
     let maxAgeLabel = UILabel()
@@ -39,8 +52,26 @@ class SettingsCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        minAgeLabel.text = "Min: 18"
+        maxAgeLabel.text = "Max: 60"
+        
         addSubview(inputField)
         inputField.fillSuperview()
+        
+        let minStack = UIStackView(arrangedSubviews: [minAgeLabel, minAgeSlider])
+        minStack.spacing = 24
+        
+        let maxStack = UIStackView(arrangedSubviews: [maxAgeLabel, maxAgeSlider])
+        maxStack.spacing = 24
+        
+        sliderStack = UIStackView(arrangedSubviews: [minStack, maxStack])
+        sliderStack.axis = .vertical
+        sliderStack.spacing = 16
+        
+        addSubview(sliderStack)
+        sliderStack.centerY(inView: self)
+        sliderStack.anchor(left: leftAnchor, right: rightAnchor, paddingLeft: 24, paddingRight: 24)
+        
     }
     
     required init?(coder: NSCoder) {
@@ -49,11 +80,24 @@ class SettingsCell: UITableViewCell {
     
     //MARK: - Selectors
     
+    @objc func handleUpdateUserInfo(sender: UITextField) {
+        guard let value = sender.text else { return }
+        delegate?.settingsCell(self, wantsToUpdateUserWith: value, for: viewModel.section)
+    }
+    
     @objc func handleAgeRangeChanged() {
         
     }
     
     // MARK: Helpers
+    
+    func configure() {
+        inputField.isHidden = viewModel.shouldHideInputField
+        sliderStack.isHidden = viewModel.shouldHideSlider
+        
+        inputField.placeholder = viewModel.placeholderText
+        inputField.text = viewModel.value
+    }
     
     func createAgeRangeSlider() -> UISlider {
         let slider = UISlider()

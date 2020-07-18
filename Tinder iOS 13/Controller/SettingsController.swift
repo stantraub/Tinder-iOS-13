@@ -10,14 +10,31 @@ import UIKit
 
 private let reuseIdentifier = "SettingsCell"
 
+protocol SettingsControllerDelegate: class {
+    func settingsController(_ controller: SettingsController, wantsToUpdate user: User)
+}
+
 class SettingsController: UITableViewController {
     
     //MARK: - Properties
+    private var user: User
     
     private let headerView = SettingsHeader()
     private let imagePicker = UIImagePickerController()
     private var imageIndex = 0
+    
+    weak var delegate: SettingsControllerDelegate?
+    
     //MARK: - Lifecycle
+    
+    init(user: User) {
+        self.user = user
+        super.init(style: .plain)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +48,8 @@ class SettingsController: UITableViewController {
     }
     
     @objc func handleDone() {
-        print("Tapped done")
+        view.endEditing(true)
+        delegate?.settingsController(self, wantsToUpdate: user)
     }
     
     //MARK: - Helpers
@@ -74,6 +92,10 @@ extension SettingsController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! SettingsCell
+        guard let section = SettingsSections(rawValue: indexPath.section) else { return cell}
+        let viewModel = SettingsViewModel(user: user, section: section)
+        cell.viewModel = viewModel
+        cell.delegate = self
         return cell
     }
 }
@@ -117,5 +139,24 @@ extension SettingsController: UIImagePickerControllerDelegate, UINavigationContr
         setHeaderImage(selectedImage)
         
         dismiss(animated: true, completion: nil)
+    }
+}
+
+extension SettingsController: SettingsCellDelegate {
+    func settingsCell(_ cell: SettingsCell, wantsToUpdateUserWith value: String, for section: SettingsSections) {
+        switch section {
+        case .name:
+            user.name = value
+        case .profession:
+            user.profession = value
+        case .age:
+            user.age = Int(value) ?? user.age
+        case .bio:
+            user.bio = value
+        case .ageRange:
+            break
+        }
+        
+        print("USer is \(user)")
     }
 }
