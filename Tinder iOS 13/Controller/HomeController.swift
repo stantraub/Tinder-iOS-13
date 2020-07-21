@@ -22,8 +22,8 @@ class HomeController: UIViewController {
     
     private let deckView: UIView = {
         let view = UIView()
-        view.backgroundColor = .systemPink
-        view.layer.cornerRadius = 5
+        view.backgroundColor = .white
+        view.layer.cornerRadius = 10
         return view
     }()
     //MARK: - Lifecycle
@@ -34,7 +34,6 @@ class HomeController: UIViewController {
         configureUI()
         fetchUsers()
         fetchUser()
-//        logout()
     }
     
     //MARK: - API
@@ -74,6 +73,7 @@ class HomeController: UIViewController {
     func configureCards() {
         viewModels.forEach { viewModel in
             let cardView = CardView(viewModel: viewModel)
+            cardView.delegate = self
             deckView.addSubview(cardView)
             cardView.fillSuperview()
         }
@@ -129,9 +129,24 @@ extension HomeController: HomeNavigationStackViewDelegate {
 //MARK: - SettingsControllerDelegate
 
 extension HomeController: SettingsControllerDelegate {
+    func settingsControllerWantsToLogout(_ controller: SettingsController) {
+        controller.dismiss(animated: true, completion: nil)
+        logout()
+    }
+    
     func settingsController(_ controller: SettingsController, wantsToUpdate user: User) {
         controller.dismiss(animated: true, completion: nil)
         self.user = user
+    }
+}
+
+//MARK: - CardViewDelegate
+
+extension HomeController: CardViewDelegate {
+    func cardView(_ view: CardView, wantsToShowProfileFor user: User) {
+        let controller = ProfileController(user: user)
+        controller.modalPresentationStyle = .fullScreen
+        present(controller, animated: true, completion: nil)
     }
     
     

@@ -14,10 +14,17 @@ enum SwipeDirection: Int {
     case right = 1
 }
 
+protocol CardViewDelegate: class {
+    func cardView(_ view: CardView, wantsToShowProfileFor user: User)
+}
+
 class CardView: UIView {
     //MARK: - Properties
     
+    weak var delegate: CardViewDelegate?
+    
     private let gradientLayer = CAGradientLayer()
+    private let barStackView = UIStackView()
     
     private let viewModel: CardViewModel
     
@@ -37,6 +44,7 @@ class CardView: UIView {
     private lazy var infoButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(#imageLiteral(resourceName: "info_icon").withRenderingMode(.alwaysOriginal), for: .normal)
+        button.addTarget(self, action: #selector(handleShowProfile), for: .touchUpInside)
         return button
     }()
     
@@ -47,9 +55,9 @@ class CardView: UIView {
         super.init(frame: .zero)
         
         configureGestureRecognizers()
-        
-        imageView.sd_setImage(with: viewModel.imageUrl) //sd handles image caching so you don't have to make another API call 
-        
+            
+        imageView.sd_setImage(with: viewModel.imageUrl)
+       
         backgroundColor = .systemPurple
         layer.cornerRadius = 10
         clipsToBounds = true
@@ -57,7 +65,9 @@ class CardView: UIView {
         addSubview(imageView)
         imageView.fillSuperview()
         
+        configureBarStackView()
         configureGradientLayer()
+        
         
         addSubview(infoLabel)
         infoLabel.anchor(left: leftAnchor, bottom: bottomAnchor, right: rightAnchor,
@@ -79,6 +89,10 @@ class CardView: UIView {
     }
     
     //MARK: - Selectors
+    
+    @objc func handleShowProfile() {
+        delegate?.cardView(self, wantsToShowProfileFor: viewModel.user)
+    }
     
     @objc func handlePanGesture(sender: UIPanGestureRecognizer) {
         
@@ -104,7 +118,9 @@ class CardView: UIView {
             viewModel.showPreviousPhoto()
         }
         
-//        imageView.image = viewModel.imageToShow
+        imageView.sd_setImage(with: viewModel.imageUrl)
+        barStackView.arrangedSubviews.forEach({ $0.backgroundColor = .barDeselectedColor})
+        barStackView.arrangedSubviews[viewModel.index].backgroundColor = .white
     }
     
     //MARK: - Helpers
@@ -136,6 +152,22 @@ class CardView: UIView {
                 self.removeFromSuperview()
             }
         }
+    }
+    
+    func configureBarStackView() {
+        (0..<viewModel.imageURLs.count).forEach { _ in
+            let barView = UIView()
+            barView.backgroundColor = .barDeselectedColor
+            barStackView.addArrangedSubview(barView)
+        }
+        
+        barStackView.arrangedSubviews.first?.backgroundColor = .white
+        
+        addSubview(barStackView)
+        barStackView.anchor(top: topAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 8, paddingLeft: 8, paddingRight: 8, height: 4)
+        
+        barStackView.spacing = 4
+        barStackView.distribution = .fillEqually
     }
     
     func configureGradientLayer() {

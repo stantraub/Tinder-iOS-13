@@ -7,19 +7,21 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 private let reuseIdentifier = "SettingsCell"
 
 protocol SettingsControllerDelegate: class {
     func settingsController(_ controller: SettingsController, wantsToUpdate user: User)
+    func settingsControllerWantsToLogout(_ controller: SettingsController)
 }
 
 class SettingsController: UITableViewController {
     
     //MARK: - Properties
     private var user: User
-    
-    private let headerView = SettingsHeader()
+    private let footerView = SettingsFooter()
+    private lazy var headerView = SettingsHeader(user: user)
     private let imagePicker = UIImagePickerController()
     private var imageIndex = 0
     
@@ -49,7 +51,28 @@ class SettingsController: UITableViewController {
     
     @objc func handleDone() {
         view.endEditing(true)
-        delegate?.settingsController(self, wantsToUpdate: user)
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "Saving Your Data"
+        hud.show(in: view)
+        
+        Service.saveUserData(user: user) { (error) in
+            self.delegate?.settingsController(self, wantsToUpdate: self.user)
+            hud.dismiss()
+        }
+        
+    }
+    
+    //MARK: - API
+    
+    func uploadImage(image: UIImage) {
+        let hud = JGProgressHUD(style: .dark)
+        hud.textLabel.text = "Saving image"
+        hud.show(in: view)
+        
+        Service.uploadImage(image: image) { imageUrl in
+            self.user.imageURLs.append(imageUrl)
+            hud.dismiss()
+        }
     }
     
     //MARK: - Helpers
@@ -76,6 +99,10 @@ class SettingsController: UITableViewController {
         tableView.rowHeight = 44
         tableView.register(SettingsCell.self, forCellReuseIdentifier: reuseIdentifier)
         headerView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 300)
+        
+        tableView.tableFooterView = footerView
+        footerView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 88)
+        footerView.delegate = self
     }
 }
 
@@ -134,15 +161,23 @@ extension SettingsController: SettingsHeaderDelegate {
 
 extension SettingsController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        let selectedImage = info[.originalImage] as? UIImage
+        guard let selectedImage = info[.originalImage] as? UIImage else { return }
         
+        uploadImage(image: selectedImage)
         setHeaderImage(selectedImage)
-        
         dismiss(animated: true, completion: nil)
     }
 }
 
 extension SettingsController: SettingsCellDelegate {
+    func settingsCell(_ cell: SettingsCell, wantsToUpdateAgeRangeWith sender: UISlider) {
+        if sender == cell.minAgeSlider {
+            user.minSeekingAge = Int(sender.value)
+        } else {
+            user.maxSeekingAge = Int(sender.value)
+        }
+    }
+    
     func settingsCell(_ cell: SettingsCell, wantsToUpdateUserWith value: String, for section: SettingsSections) {
         switch section {
         case .name:
@@ -159,4 +194,12 @@ extension SettingsController: SettingsCellDelegate {
         
         print("USer is \(user)")
     }
+}
+
+extension SettingsController: SettingsFooterDelegate {
+    func handleLogout() {
+        delegate?.settingsControllerWantsToLogout(self)
+    }
+    
+    
 }

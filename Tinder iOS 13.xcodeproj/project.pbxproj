@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		114C848D24C12789003DE253 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114C848C24C12789003DE253 /* SettingsCell.swift */; };
 		114C848F24C12936003DE253 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114C848E24C12936003DE253 /* SettingsViewModel.swift */; };
+		114C84D624C3A099003DE253 /* SettingsFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114C84D524C3A099003DE253 /* SettingsFooter.swift */; };
+		114C84D924C41511003DE253 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114C84D824C41511003DE253 /* ProfileController.swift */; };
+		114C84DB24C41825003DE253 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114C84DA24C41825003DE253 /* ProfileCell.swift */; };
+		114C84DD24C667AC003DE253 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114C84DC24C667AC003DE253 /* ProfileViewModel.swift */; };
 		1156638124B798F8009E7C61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1156638024B798F8009E7C61 /* AppDelegate.swift */; };
 		1156638324B798F8009E7C61 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1156638224B798F8009E7C61 /* SceneDelegate.swift */; };
 		1156638824B798F8009E7C61 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1156638624B798F8009E7C61 /* Main.storyboard */; };
@@ -38,6 +42,10 @@
 /* Begin PBXFileReference section */
 		114C848C24C12789003DE253 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		114C848E24C12936003DE253 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		114C84D524C3A099003DE253 /* SettingsFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFooter.swift; sourceTree = "<group>"; };
+		114C84D824C41511003DE253 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
+		114C84DA24C41825003DE253 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
+		114C84DC24C667AC003DE253 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		1156637D24B798F8009E7C61 /* Tinder iOS 13.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tinder iOS 13.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1156638024B798F8009E7C61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1156638224B798F8009E7C61 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +88,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		114C84D724C3A09F003DE253 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				1177E4E524BD740800F3828D /* SettingsHeader.swift */,
+				114C848C24C12789003DE253 /* SettingsCell.swift */,
+				114C84D524C3A099003DE253 /* SettingsFooter.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		1156637424B798F8009E7C61 = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +162,7 @@
 				115663AC24B972D7009E7C61 /* Authentication */,
 				1156639A24B79999009E7C61 /* HomeController.swift */,
 				1177E4E324BD605700F3828D /* SettingsController.swift */,
+				114C84D824C41511003DE253 /* ProfileController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -154,6 +173,7 @@
 				115663AA24B80C10009E7C61 /* CardViewModel.swift */,
 				1177E4D524BACDB800F3828D /* AuthenticationViewModel.swift */,
 				114C848E24C12936003DE253 /* SettingsViewModel.swift */,
+				114C84DC24C667AC003DE253 /* ProfileViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -161,11 +181,11 @@
 		1156639824B7991F009E7C61 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				114C84D724C3A09F003DE253 /* Settings */,
 				115663A024B79AD1009E7C61 /* HomeNavigationStackView.swift */,
 				115663A424B79F9B009E7C61 /* BottomControlsStackView.swift */,
 				115663A624B7A3E4009E7C61 /* CardView.swift */,
-				1177E4E524BD740800F3828D /* SettingsHeader.swift */,
-				114C848C24C12789003DE253 /* SettingsCell.swift */,
+				114C84DA24C41825003DE253 /* ProfileCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -325,13 +345,16 @@
 				1177E4E224BD173B00F3828D /* Constants.swift in Sources */,
 				115663B424BA2AD1009E7C61 /* AuthButton.swift in Sources */,
 				1177E4D624BACDB800F3828D /* AuthenticationViewModel.swift in Sources */,
+				114C84D624C3A099003DE253 /* SettingsFooter.swift in Sources */,
 				115663A524B79F9B009E7C61 /* BottomControlsStackView.swift in Sources */,
 				1156638124B798F8009E7C61 /* AppDelegate.swift in Sources */,
 				115663A124B79AD1009E7C61 /* HomeNavigationStackView.swift in Sources */,
+				114C84D924C41511003DE253 /* ProfileController.swift in Sources */,
 				115663A924B80B11009E7C61 /* User.swift in Sources */,
 				1156638324B798F8009E7C61 /* SceneDelegate.swift in Sources */,
 				115663B024B972EF009E7C61 /* RegistrationController.swift in Sources */,
 				1177E4E024BB85EC00F3828D /* Service.swift in Sources */,
+				114C84DD24C667AC003DE253 /* ProfileViewModel.swift in Sources */,
 				1156639B24B79999009E7C61 /* HomeController.swift in Sources */,
 				115663B224B98DE3009E7C61 /* CustomTextField.swift in Sources */,
 				114C848D24C12789003DE253 /* SettingsCell.swift in Sources */,
@@ -339,6 +362,7 @@
 				1177E4E624BD740800F3828D /* SettingsHeader.swift in Sources */,
 				1177E4DE24BB85E000F3828D /* AuthService.swift in Sources */,
 				115663AB24B80C10009E7C61 /* CardViewModel.swift in Sources */,
+				114C84DB24C41825003DE253 /* ProfileCell.swift in Sources */,
 				115663AE24B972E7009E7C61 /* LoginController.swift in Sources */,
 				114C848F24C12936003DE253 /* SettingsViewModel.swift in Sources */,
 			);
