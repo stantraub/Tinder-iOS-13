@@ -19,17 +19,24 @@ struct Service {
         }
     }
     
-    static func fetchUsers(completion: @escaping([User]) -> Void) {
+    static func fetchUsers(forCurrentUser user: User, completion: @escaping([User]) -> Void) {
         var users = [User]()
         
-        COLLECTION_USERS.getDocuments { (snapshot, error) in
-            snapshot?.documents.forEach({ document in
+        let query = COLLECTION_USERS
+            .whereField("age", isGreaterThanOrEqualTo: user.minSeekingAge)
+            .whereField("age", isLessThanOrEqualTo: user.maxSeekingAge)
+
+        
+        query.getDocuments { (snapshot, error) in
+            guard let snapshot = snapshot else { return }
+            snapshot.documents.forEach({ document in
                 let dictionary = document.data()
                 let user = User(dictionary: dictionary)
                 
+                guard user.uid != Auth.auth().currentUser?.uid else { return }
                 users.append(user)
                 
-                if users.count == snapshot?.documents.count {
+                if users.count == snapshot.documents.count - 1 {
                     completion(users)
                 }
             })
@@ -39,7 +46,7 @@ struct Service {
     static func saveUserData(user: User, completion: @escaping(Error?) -> Void) {
         let data = ["uid": user.uid,
                     "fullname": user.name,
-                    "imageUrls": user.imageURLs,
+                    "imageURLs": user.imageURLs,
                     "age": user.age,
                     "bio": user.bio,
                     "profession": user.profession,
@@ -47,6 +54,20 @@ struct Service {
                     "maxSeekingAge": user.maxSeekingAge] as [String: Any]
         
         COLLECTION_USERS.document(user.uid).setData(data, completion: completion)
+    }
+    
+    static func saveSwipe(forUser user: User, isLike: Bool) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+//        let shouldLike = isLike ? 1 : 0
+        COLLECTION_SWIPES.document(uid).getDocument { (snapshot, error) in
+            let data = [user.uid: isLike]
+            
+            if snapshot?.exists == true {
+                COLLECTION_SWIPES.document(uid).updateData(data)
+            } else {
+                COLLECTION_SWIPES.document(uid).setData(data)
+            }
+        }
     }
     
     static func uploadImage(image: UIImage, completion: @escaping(String) -> Void) {

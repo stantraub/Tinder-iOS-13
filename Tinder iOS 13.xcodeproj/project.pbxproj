@@ -13,6 +13,7 @@
 		114C84D924C41511003DE253 /* ProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114C84D824C41511003DE253 /* ProfileController.swift */; };
 		114C84DB24C41825003DE253 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114C84DA24C41825003DE253 /* ProfileCell.swift */; };
 		114C84DD24C667AC003DE253 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114C84DC24C667AC003DE253 /* ProfileViewModel.swift */; };
+		114C84DF24C6844E003DE253 /* SegmentedBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114C84DE24C6844E003DE253 /* SegmentedBarView.swift */; };
 		1156638124B798F8009E7C61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1156638024B798F8009E7C61 /* AppDelegate.swift */; };
 		1156638324B798F8009E7C61 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1156638224B798F8009E7C61 /* SceneDelegate.swift */; };
 		1156638824B798F8009E7C61 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1156638624B798F8009E7C61 /* Main.storyboard */; };
@@ -46,6 +47,7 @@
 		114C84D824C41511003DE253 /* ProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileController.swift; sourceTree = "<group>"; };
 		114C84DA24C41825003DE253 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		114C84DC24C667AC003DE253 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		114C84DE24C6844E003DE253 /* SegmentedBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedBarView.swift; sourceTree = "<group>"; };
 		1156637D24B798F8009E7C61 /* Tinder iOS 13.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tinder iOS 13.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1156638024B798F8009E7C61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1156638224B798F8009E7C61 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 				115663A424B79F9B009E7C61 /* BottomControlsStackView.swift */,
 				115663A624B7A3E4009E7C61 /* CardView.swift */,
 				114C84DA24C41825003DE253 /* ProfileCell.swift */,
+				114C84DE24C6844E003DE253 /* SegmentedBarView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1177E4E424BD605700F3828D /* SettingsController.swift in Sources */,
+				114C84DF24C6844E003DE253 /* SegmentedBarView.swift in Sources */,
 				115663A724B7A3E4009E7C61 /* CardView.swift in Sources */,
 				1177E4E224BD173B00F3828D /* Constants.swift in Sources */,
 				115663B424BA2AD1009E7C61 /* AuthButton.swift in Sources */,

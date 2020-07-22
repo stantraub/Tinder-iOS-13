@@ -10,12 +10,20 @@ import UIKit
 
 private let reuseIdentifier = "ProfileCell"
 
+protocol ProfileControllerDelegate: class {
+    func profileController(_ controller: ProfileController, didLikeUser user: User)
+    func profileController(_ controller: ProfileController, didDislikeUser user: User)
+
+}
+
 class ProfileController: UIViewController {
     //MARK: - Properties
     
     private let user: User
+    weak var delegate: ProfileControllerDelegate?
     
     private lazy var viewModel = ProfileViewModel(user: user)
+    private lazy var barStackView = SegmentedBarView(numberOfSegments: viewModel.imageURLs.count)
     // lazy var because we are trying to access "user" property on a class level
     // user can only be used once it's only available
     
@@ -31,6 +39,13 @@ class ProfileController: UIViewController {
         cv.showsHorizontalScrollIndicator = false
         cv.register(ProfileCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         return cv
+    }()
+    
+    private let blurView: UIVisualEffectView = {
+        let blur = UIBlurEffect(style: .regular)
+        let view = UIVisualEffectView(effect: blur)
+        return view
+        
     }()
     
     private let dismissButton: UIButton = {
@@ -105,7 +120,7 @@ class ProfileController: UIViewController {
     }
     
     @objc func handleDislike() {
-        
+        delegate?.profileController(self, didDislikeUser: user)
     }
     
     @objc func handleSuperlike() {
@@ -113,7 +128,7 @@ class ProfileController: UIViewController {
     }
     
     @objc func handleLike() {
-        
+        delegate?.profileController(self, didLikeUser: user)
     }
     
     //MARK: - Helpers
@@ -135,7 +150,12 @@ class ProfileController: UIViewController {
                          right: view.rightAnchor, paddingTop: 12, paddingLeft: 12,
                          paddingRight: 12)
         
+        view.addSubview(blurView)
+        blurView.anchor(top: view.topAnchor, left: view.leftAnchor,
+                        bottom: view.safeAreaLayoutGuide.topAnchor, right: view.rightAnchor)
+        
         configureBottomControls()
+        configureBarStackView()
     }
     
     func loadUserData() {
@@ -153,6 +173,11 @@ class ProfileController: UIViewController {
         stack.setDimensions(height: 80, width: 300)
         stack.centerX(inView: view)
         stack.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor, paddingBottom: 32)
+    }
+    
+    func configureBarStackView() {
+        view.addSubview(barStackView)
+        barStackView.anchor(top: view.topAnchor, left: view.leftAnchor, right: view.rightAnchor, paddingTop: 56, paddingLeft: 8, paddingRight: 8, height: 4)
     }
     
     func createButton(withImage image: UIImage) -> UIButton {
@@ -182,7 +207,9 @@ extension ProfileController: UICollectionViewDataSource {
 //MARK: - UICollectionViewDelegate
 
 extension ProfileController: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        barStackView.setHighlighted(index: indexPath.row)
+    }
 }
 
 //MARK: - UICollectionViewDelegateFlowLayout

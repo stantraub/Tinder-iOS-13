@@ -28,12 +28,8 @@ class CardViewModel {
         
         self.userInfoText = attributedText
         
-
         self.imageURLs = user.imageURLs
-        print(self.imageURLs.count)
-        if self.imageURLs.count > 1 {
-            self.imageUrl = URL(string: self.imageURLs[0])
-        }
+        self.imageUrl = URL(string: self.imageURLs[0])
     }
     
     func showNextPhoto() {

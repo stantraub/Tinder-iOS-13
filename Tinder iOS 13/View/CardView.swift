@@ -16,6 +16,7 @@ enum SwipeDirection: Int {
 
 protocol CardViewDelegate: class {
     func cardView(_ view: CardView, wantsToShowProfileFor user: User)
+    func cardView(_ view: CardView, didLikeUser: Bool)
 }
 
 class CardView: UIView {
@@ -24,9 +25,9 @@ class CardView: UIView {
     weak var delegate: CardViewDelegate?
     
     private let gradientLayer = CAGradientLayer()
-    private let barStackView = UIStackView()
+    private lazy var barStackView = SegmentedBarView(numberOfSegments: viewModel.imageURLs.count)
     
-    private let viewModel: CardViewModel
+    let viewModel: CardViewModel
     
     private let imageView: UIImageView = {
         let iv = UIImageView()
@@ -54,11 +55,12 @@ class CardView: UIView {
         self.viewModel = viewModel
         super.init(frame: .zero)
         
+        backgroundColor = .white
+        
         configureGestureRecognizers()
             
         imageView.sd_setImage(with: viewModel.imageUrl)
        
-        backgroundColor = .systemPurple
         layer.cornerRadius = 10
         clipsToBounds = true
         
@@ -119,8 +121,8 @@ class CardView: UIView {
         }
         
         imageView.sd_setImage(with: viewModel.imageUrl)
-        barStackView.arrangedSubviews.forEach({ $0.backgroundColor = .barDeselectedColor})
-        barStackView.arrangedSubviews[viewModel.index].backgroundColor = .white
+        
+        barStackView.setHighlighted(index: viewModel.index)
     }
     
     //MARK: - Helpers
@@ -149,25 +151,10 @@ class CardView: UIView {
             
         }) { _ in
             if shouldDismissCard {
-                self.removeFromSuperview()
+                let didLike = direction == .right
+                self.delegate?.cardView(self, didLikeUser: didLike)
             }
         }
-    }
-    
-    func configureBarStackView() {
-        (0..<viewModel.imageURLs.count).forEach { _ in
-            let barView = UIView()
-            barView.backgroundColor = .barDeselectedColor
-            barStackView.addArrangedSubview(barView)
-        }
-        
-        barStackView.arrangedSubviews.first?.backgroundColor = .white
-        
-        addSubview(barStackView)
-        barStackView.anchor(top: topAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 8, paddingLeft: 8, paddingRight: 8, height: 4)
-        
-        barStackView.spacing = 4
-        barStackView.distribution = .fillEqually
     }
     
     func configureGradientLayer() {
@@ -175,6 +162,11 @@ class CardView: UIView {
         gradientLayer.locations = [0.5, 1.1]
         layer.addSublayer(gradientLayer)
     }
+    
+    func configureBarStackView() {
+         addSubview(barStackView)
+         barStackView.anchor(top: topAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 8, paddingLeft: 8, paddingRight: 8, height: 4)
+     }
     
     func configureGestureRecognizers() {
         let pan = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture))

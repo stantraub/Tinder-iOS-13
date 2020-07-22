@@ -8,9 +8,17 @@
 
 import UIKit
 
+protocol BottomControlsStackViewDelegate: class {
+    func handleLike()
+    func handleDislike()
+    func handleRefresh()
+}
+
 class BottomControlsStackView: UIStackView {
     
     //MARK: - Properties
+    
+    weak var delegate: BottomControlsStackViewDelegate?
     
     let refreshButton = UIButton(type: .system)
     let dislikeButton = UIButton(type: .system)
@@ -31,6 +39,11 @@ class BottomControlsStackView: UIStackView {
         superlikeButton.setImage(#imageLiteral(resourceName: "super_like_circle").withRenderingMode(.alwaysOriginal), for: .normal)
         likeButton.setImage(#imageLiteral(resourceName: "like_circle").withRenderingMode(.alwaysOriginal), for: .normal)
         boostButton.setImage(#imageLiteral(resourceName: "boost_circle").withRenderingMode(.alwaysOriginal), for: .normal)
+        
+        refreshButton.addTarget(self, action: #selector(handleRefresh), for: .touchUpInside)
+        dislikeButton.addTarget(self, action: #selector(handleDislike), for: .touchUpInside)
+        likeButton.addTarget(self, action: #selector(handleLike), for: .touchUpInside)
+
 
         
         [refreshButton, dislikeButton, superlikeButton, likeButton, boostButton].forEach { view in
@@ -41,6 +54,20 @@ class BottomControlsStackView: UIStackView {
     
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    //MARK: - Selectors
+    
+    @objc func handleRefresh() {
+        delegate?.handleRefresh()
+    }
+    
+    @objc func handleDislike() {
+        delegate?.handleDislike()
+    }
+    
+    @objc func handleLike() {
+        delegate?.handleLike()
     }
 }
 
