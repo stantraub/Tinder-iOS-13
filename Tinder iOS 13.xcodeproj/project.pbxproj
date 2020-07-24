@@ -18,6 +18,11 @@
 		114C84E324C8FC81003DE253 /* SendMessageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114C84E224C8FC81003DE253 /* SendMessageButton.swift */; };
 		114C84E524C8FC91003DE253 /* KeepSwipingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114C84E424C8FC91003DE253 /* KeepSwipingButton.swift */; };
 		114C84E724C92832003DE253 /* MatchViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114C84E624C92832003DE253 /* MatchViewViewModel.swift */; };
+		114C84E924CA1B4F003DE253 /* MessagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114C84E824CA1B4F003DE253 /* MessagesController.swift */; };
+		114C84EB24CA2506003DE253 /* MatchHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114C84EA24CA2506003DE253 /* MatchHeader.swift */; };
+		114C84ED24CA474A003DE253 /* MatchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114C84EC24CA474A003DE253 /* MatchCell.swift */; };
+		114C84EF24CA4BD4003DE253 /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114C84EE24CA4BD4003DE253 /* Match.swift */; };
+		114C84F124CA8B35003DE253 /* MatchCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114C84F024CA8B35003DE253 /* MatchCellViewModel.swift */; };
 		1156638124B798F8009E7C61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1156638024B798F8009E7C61 /* AppDelegate.swift */; };
 		1156638324B798F8009E7C61 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1156638224B798F8009E7C61 /* SceneDelegate.swift */; };
 		1156638824B798F8009E7C61 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1156638624B798F8009E7C61 /* Main.storyboard */; };
@@ -56,6 +61,11 @@
 		114C84E224C8FC81003DE253 /* SendMessageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMessageButton.swift; sourceTree = "<group>"; };
 		114C84E424C8FC91003DE253 /* KeepSwipingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeepSwipingButton.swift; sourceTree = "<group>"; };
 		114C84E624C92832003DE253 /* MatchViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchViewViewModel.swift; sourceTree = "<group>"; };
+		114C84E824CA1B4F003DE253 /* MessagesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesController.swift; sourceTree = "<group>"; };
+		114C84EA24CA2506003DE253 /* MatchHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchHeader.swift; sourceTree = "<group>"; };
+		114C84EC24CA474A003DE253 /* MatchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchCell.swift; sourceTree = "<group>"; };
+		114C84EE24CA4BD4003DE253 /* Match.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
+		114C84F024CA8B35003DE253 /* MatchCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchCellViewModel.swift; sourceTree = "<group>"; };
 		1156637D24B798F8009E7C61 /* Tinder iOS 13.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tinder iOS 13.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1156638024B798F8009E7C61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1156638224B798F8009E7C61 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -173,6 +183,7 @@
 				1156639A24B79999009E7C61 /* HomeController.swift */,
 				1177E4E324BD605700F3828D /* SettingsController.swift */,
 				114C84D824C41511003DE253 /* ProfileController.swift */,
+				114C84E824CA1B4F003DE253 /* MessagesController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -185,6 +196,7 @@
 				114C848E24C12936003DE253 /* SettingsViewModel.swift */,
 				114C84DC24C667AC003DE253 /* ProfileViewModel.swift */,
 				114C84E624C92832003DE253 /* MatchViewViewModel.swift */,
+				114C84F024CA8B35003DE253 /* MatchCellViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -201,6 +213,8 @@
 				114C84E024C8C1E6003DE253 /* MatchView.swift */,
 				114C84E424C8FC91003DE253 /* KeepSwipingButton.swift */,
 				114C84E224C8FC81003DE253 /* SendMessageButton.swift */,
+				114C84EA24CA2506003DE253 /* MatchHeader.swift */,
+				114C84EC24CA474A003DE253 /* MatchCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -209,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				115663A824B80B11009E7C61 /* User.swift */,
+				114C84EE24CA4BD4003DE253 /* Match.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -357,12 +372,15 @@
 			files = (
 				1177E4E424BD605700F3828D /* SettingsController.swift in Sources */,
 				114C84DF24C6844E003DE253 /* SegmentedBarView.swift in Sources */,
+				114C84EB24CA2506003DE253 /* MatchHeader.swift in Sources */,
 				115663A724B7A3E4009E7C61 /* CardView.swift in Sources */,
 				1177E4E224BD173B00F3828D /* Constants.swift in Sources */,
 				115663B424BA2AD1009E7C61 /* AuthButton.swift in Sources */,
 				1177E4D624BACDB800F3828D /* AuthenticationViewModel.swift in Sources */,
+				114C84E924CA1B4F003DE253 /* MessagesController.swift in Sources */,
 				114C84D624C3A099003DE253 /* SettingsFooter.swift in Sources */,
 				115663A524B79F9B009E7C61 /* BottomControlsStackView.swift in Sources */,
+				114C84F124CA8B35003DE253 /* MatchCellViewModel.swift in Sources */,
 				1156638124B798F8009E7C61 /* AppDelegate.swift in Sources */,
 				115663A124B79AD1009E7C61 /* HomeNavigationStackView.swift in Sources */,
 				114C84D924C41511003DE253 /* ProfileController.swift in Sources */,
@@ -378,11 +396,13 @@
 				114C848D24C12789003DE253 /* SettingsCell.swift in Sources */,
 				1156639D24B79A4E009E7C61 /* Extensions.swift in Sources */,
 				1177E4E624BD740800F3828D /* SettingsHeader.swift in Sources */,
+				114C84EF24CA4BD4003DE253 /* Match.swift in Sources */,
 				1177E4DE24BB85E000F3828D /* AuthService.swift in Sources */,
 				115663AB24B80C10009E7C61 /* CardViewModel.swift in Sources */,
 				114C84E524C8FC91003DE253 /* KeepSwipingButton.swift in Sources */,
 				114C84DB24C41825003DE253 /* ProfileCell.swift in Sources */,
 				114C84E324C8FC81003DE253 /* SendMessageButton.swift in Sources */,
+				114C84ED24CA474A003DE253 /* MatchCell.swift in Sources */,
 				115663AE24B972E7009E7C61 /* LoginController.swift in Sources */,
 				114C848F24C12936003DE253 /* SettingsViewModel.swift in Sources */,
 			);
